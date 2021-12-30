@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="angular.min.js"></script>
+  <title>Tính điểm thi</title>
+</head>
+<body>
+  <div ng-app="ScoreCountApp" ng-controller="ScoreCountController">
+    <h3>Nhập điểm Toán: <input type="number" ng-model="math"></h3>
+    <h3>Nhập điểm Lý: <input type="number" ng-model="physics"></h3>
+    <h3>Nhập điểm Hóa: <input type="number" ng-model="chemistry"></h3>
+    <button ng-click="ScoreCount()">Tính điểm</button>
+    <h3>Tổng điểm: {{total}}</h3>
+    <h3>Điểm trung bình: {{avrg}}</h3>
+  </div>
+  <script>
+    var app=angular.module('ScoreCountApp',[]);
+    app.controller('ScoreCountController',function ($scope){
+      $scope.math=0;
+      $scope.physics=0;
+      $scope.chemistry=0;
+      $scope.total=0;
+      $scope.avrg=0;
+      $scope.ScoreCount=function(){
+        $scope.total=$scope.math+$scope.physics+$scope.chemistry;
+        $scope.avrg=$scope.total/3;
+      };
+    });
+  </script>
+</body>
+</html>
